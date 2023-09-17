@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-item {
+    @apply text-lg text-center bg-red-200 m-1 p-1 font-medium w-32 rounded-lg;
+}
+
+.nav-item:hover {
+    @apply bg-red-400 transition duration-300
+}
+
+.nav-item:active {
+    @apply scale-90
+}
