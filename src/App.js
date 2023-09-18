@@ -1,31 +1,58 @@
-import { useEffect } from 'react';
-import styles from './App.module.css';
-import Test from './Test'
-import TailwindButton from './Button';
-import './tailwind.css'
-import Navbar from './Navbar'
+// import { createElement } from 'react';
 
 function App() {
+  const todos = ['todo1', 'todo2', 'todo3']
 
-  useEffect(() => {
+  // JSX Olmasaydı elementleri bu şekillerde oluşturacaktık.
+  // 1. Yol
+  // return createElement('main', {
+  //   id: 'id',
+  //   className: 'main'
+  // }, createElement('h1',
+  //   {
+  //     id: 'title',
+  //     className: 'title'
+  //   }, 'JSX Olmasaydı'), createElement('ul', null, todos.map(
+  //     todo => createElement('li', null, todo))))
+  // 2. Yol
+  // const h1 = createElement('h1', {
+  //   id: 'title',
+  //   className: 'title'
+  // }, 'JSX Olmasaydı')
 
-  }, [])
+  // const ul = createElement('ul', null, todos.map(todo => createElement('li', null, todo)))
 
+  // return createElement('main', {
+  //   id: 'main',
+  //   className: 'main'
+  // }, h1, ul)
+
+  // JSX ile bu şekilde kolaylıkla oluşturabiliyoruz
   return (
-    <>
-      <Navbar />
-      <div className={styles.Flex}>
-        <h2 className={styles.App}>{process.env.NODE_ENV}</h2>
-        <Test />
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            <img src="favicon.ico" alt="" />
-          </>
+    <main id='main' className='main'>
+      <h1 tabIndex='3' style={{ color: 'red', backgroundColor: '#eee', fontSize: '3rem', padding: '2rem' }}>JSX İle</h1>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+          </li>
+        )
         )}
-      </div >
-      <TailwindButton />
-    </>
+      </ul>
+      <label onClick={() => { alert('Hello!') }} htmlFor="search" style={{ marginRight: '1rem' }} tabIndex='2'>Search</label>
+      <input type="text" id='search' tabIndex='1' />
+    </main>
+
   );
+
+  /*
+  JSX'te elementler camelCase formatında yazılır ve JavaScript ifadeleri de {} içerisinde yazılır
+  class = className
+  for = htmlFor
+  key(unique value)
+  style = style{{style values}}
+  tabIndex =  tab'a basıldığında gidilecek element sırası
+  */
 }
 
 
